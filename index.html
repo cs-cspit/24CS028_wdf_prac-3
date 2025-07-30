@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Info Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e6f2ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200vh;
+        }
+
+        form {
+            background-color: #b7b6b600;
+            padding: 35px 50px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 520px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f68b51;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #eeff37;
+        }
+    </style>
+</head>
+<body>
+    <form action="c@.html" method="get">
+        <h2>Student Registration</h2>
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Divyarajsinh Jadeja" required>
+
+        <label for="Id">Roll Number:</label>
+        <input type="text" id="Id" name="Id" placeholder="e.g. 24CS028" required>
+
+        <label for="contact">Phone Number:</label>
+        <input type="number" id="contact" name="contact" placeholder="10-digit number" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="name@mail.com" required>
+
+        <label for="address">Residence:</label>
+        <input type="text" id="address" name="address" placeholder="Your address" required>
+
+        <label for="nation">Country:</label>
+        <select id="nation" name="nation" required>
+            <option value="India">India</option>
+            <option value="Japan">USA</option>
+            <option value="Russia">Germany</option>
+        </select>
+
+        <label for="hobby">Interests:</label>
+        <input type="text" id="hobby" name="hobby" placeholder="e.g. Painting,sports, Reading" required>
+
+        <label for="gender">Select Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">rather not to say</option>
+        </select>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function(event) {
+            const contact = document.getElementById("contact").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const name = document.getElementById("name").value.trim();
+            const id = document.getElementById("Id").value.trim();
+
+            if (!/^\d{10}$/.test(contact)) {
+                alert("Phone number must be 10 digits only.");
+                event.preventDefault();
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Enter a valid email address.");
+                event.preventDefault();
+                return;
+            }
+
+            if (!/^[A-Za-z\s]{10,}$/.test(name)) {
+                alert("Name must be at least 10 letters (letters only).");
+                event.preventDefault();
+                return;
+            }
+
+            if (!/^[A-Za-z0-9]{7}$/.test(id)) {
+                alert("Roll Number must be 7 characters long (letters and numbers only).");
+                event.preventDefault();
+                return;
+            }
+
+            // You can remove this alert if using real submission
+            alert("✔ Registration successful!");
+        });
+    </script>
+</body>
+</html>
